@@ -1,0 +1,53 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+    <div style="background-color: #E0E5EA;">
+        <div class="metadata" id="account_info">
+            <img class="profile_picture" alt="Profile picture" src="{{ user.profile.image.url }}">
+            <div>
+                <h2>{{ user.username}}</h2>
+                <p style="color: slategray; font-size: 12px;">{{ user.email }}</p>
+            </div>
+        </div>
+        <form method="POST" action="" class="form" enctype="multipart/form-data" style="width: inherit">
+            {% csrf_token %}
+{#            {% if form.non_field_errors %}#}
+{#                <div class="flash danger">#}
+{#                    {{ form.non_field_errors }}#}
+{#                </div>#}
+{#            {% endif %}#}
+            {% for field in u_form %}
+                <div class="form_item">
+                    {{ field.label_tag }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p class="bad_input_text">{{ error }}</p>
+                        {% endfor %}
+                        <div class="bad_input">
+                            {{ field }}
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% for field in p_form %}
+                <div class="form_item">
+                    {{ field.label_tag }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p class="bad_input_text">{{ error }}</p>
+                        {% endfor %}
+                        <div class="bad_input">
+                            {{ field }}
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="form_item">
+                <button type="submit" class="submit"> Update </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

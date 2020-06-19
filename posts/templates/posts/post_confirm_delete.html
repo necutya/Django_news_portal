@@ -1,0 +1,14 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+     <form method="POST" action="" class="form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Delete post</legend>
+            <p>Are you sure to delete your post "{{ object.title }}"?</p>
+            <div class="form_item">
+                <button type="submit" class="submit"> Delete post </button>
+            </div>
+            <a href="{% url "posts:post" object.id %}"> Back </a>
+        </fieldset>
+    </form>
+{% endblock %}

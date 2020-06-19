@@ -1,0 +1,47 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <a class="name" href="{% url 'posts:user-posts' post.author.username %}">
+                <img src="{{ post.author.profile.image.url }}" alt="News author image." class="article_img">
+            </a>
+            <div class="content">
+                <div class="metadata">
+                    <p><a class="name" href="{% url 'posts:user-posts' post.author.username %}">{{post.author}}</a></p>
+                    <p class="date">{{post.creation_date|date:"F d, Y"}}</p>
+                    <p class="votes">Num of votes: {{ post.num_votes }} </p>
+                    {% if user not in post.votes.all %}
+                        <p class="votes"><a href="{% url 'posts:vote' post.id %}">&#9650;</a></p>
+                    {% endif %}
+                </div>
+                <h2><a href="{% url 'posts:post' post.id  %}">{{post.title}}</a></h2>
+                <p><a href="{{  post.link }}">{{post.link}}</a></p>
+            </div>
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        <div class="pagination">
+
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination_item" >First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination_item" >Previous</a>
+            {% endif %}
+
+            {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page%}
+                    <a href="#" class="pagination_item active" >{{page}}</a>
+                {% elif page > page_obj.number|add:-2 and page < page_obj.number|add:2 %}
+                    <a href="?page={{ page }}" class="pagination_item" >{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination_item" >Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination_item" >Last</a>
+            {% endif %}
+
+
+        </div>
+    {% endif %}
+{% endblock content%}
+

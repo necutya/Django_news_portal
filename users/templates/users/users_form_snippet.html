@@ -1,0 +1,20 @@
+{% if form.non_field_errors %}
+    <div class="flash danger">
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+{% for field in form %}
+    <div class="form_item">
+        {{ field.label_tag }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="bad_input_text">{{ error }}</p>
+            {% endfor %}
+            <div class="bad_input">
+                {{ field }}
+            </div>
+        {% else %}
+            {{ field }}
+        {% endif %}
+    </div>
+{% endfor %}

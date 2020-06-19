@@ -1,0 +1,13 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+     <form method="POST" action="" class="form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Create</legend>
+            {% include "users/users_form_snippet.html" %}
+            <div class="form_item">
+                <button type="submit" class="submit"> Crate a post </button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

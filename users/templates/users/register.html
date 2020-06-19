@@ -1,0 +1,18 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+    <form method="POST" action="" class="form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Sign up</legend>
+            {% include "users/users_form_snippet.html" %}
+            <div class="form_item">
+                <button type="submit" class="submit"> Sign up </button>
+            </div>
+        </fieldset>
+    </form>
+    <div class="hint">
+        <span>Already have an account?</span>
+        <a href="#"> Sign in </a>
+    </div>
+{% endblock content%}
+

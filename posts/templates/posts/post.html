@@ -1,0 +1,58 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+    <div class="post">
+        <a class="name" href="">
+            <img src="{{ post.author.profile.image.url }}" alt="News author image." class="article_img">
+        </a>
+        <div class="content">
+            <div class="metadata" style="justify-content: space-between">
+                <div class="flex_row">
+                    <p><a class="name" href="">{{ post.author}}</a></p>
+                    <p class="date">{{post.creation_date|date:"F d, Y"}}</p>
+                </div>
+                {% if post.author == user%}
+                    <div class="flex_row">
+                        <p><a class="name" href="{% url 'posts:update-post' post.id %}"><i class="fas fa-edit"></i> Edit</a></p>
+                        <p class="name"><a class="name" id="delete" href="{% url 'posts:delete-post' post.id %}"><i class="fas fa-trash-alt"></i> Delete</a></p>
+                    </div>
+                {% endif %}
+            </div>
+            <h2><a href="#">{{post.title}}</a></h2>
+            <p><a href="{{  post.link }}">{{post.link}}</a></p>
+        </div>
+    </div>
+    <h2 class="comments_title">Comments</h2>
+    <div class="comments">
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="metadata">
+                {{ comment.author }}
+                {% if comment.author == user%}
+                    <span class="flex_row">
+                        <span><a class="name" href="{% url 'posts:update-comment' comment.id %}"><i class="fas fa-edit"></i> Edit</a></span>
+                        <span class="name"><a class="name" id="delete" href="{% url 'posts:delete-comment' comment.id %}"><i class="fas fa-trash-alt"></i> Delete</a></span>
+                    </span>
+                {% endif %}
+                 <span class="date">{{comment.date_published|date:"F d, Y"}}</span>
+
+            </p>
+            <p class="comment-content">
+                {{ comment.content }}
+            </p>
+        </div>
+    {% endfor %}
+    </div>
+    <h2 class="comments_title">Create comment</h2>
+    <form method="POST" action="{% url "posts:create-post-comment" post.id%}" class="form" style="width: inherit">
+        {% csrf_token %}
+        <fieldset>
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            {% include "users/users_form_snippet.html" %}
+            <div class="form_item">
+                <button type="submit" class="submit"> Comment </button>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock content%}
+
