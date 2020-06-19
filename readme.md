@@ -31,7 +31,7 @@ Django news portal provides user friendly REST API. There are some
 |<url>/api/comments/<int: comment_id>/update * **| Update a comment with id |
 |<url>/api/posts/<int: post_id>/delete * **      | Delete a post with id    |
 |<url>/api/comments/<int: comment_id>/delete * **| Delete a comment with id |
- * You have to be authenticated
- ** You have to be an owner
+ *You have to be authenticated
+ **You have to be an owner
  
  
