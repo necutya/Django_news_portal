@@ -14,7 +14,8 @@ What can you do in this app:
 + Using API to all things, which has been mentioned below
 
 ## API
-[Link to the embeded Postman collection](https://www.getpostman.com/collections/cc2288f0b73ed0840d04) 
+[Link to the raw Postman collection](https://www.getpostman.com/collections/cc2288f0b73ed0840d04) 
+
 
 Django news portal provides user friendly REST API. There are some  
 
