@@ -11,6 +11,7 @@ What can you do in this app:
 + Update / delete post (if you are an owner of this post)
 + Create a commet to a post (if you are authenticated)
 + Update / delete comment (if you are an owner of this post)
++ Vote for a post (votings statics reset every 24 hours)
 + Using API to all things, which has been mentioned below
 
 ## API
