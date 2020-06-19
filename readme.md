@@ -19,20 +19,20 @@ What can you do in this app:
 
 Django news portal provides user friendly REST API.
 
-| API                                            | What can you do          |
-| ---------------------------------------------- |:------------------------ |
-|<url>/api/auth/token/                           | See all posts            |
-|<url>/api/posts/                                | See all posts            |
-|<url>/api/comments/                             | See all comments         |
-|<url>/api/posts/<int: post_id>/                 | See a post with id       |
-|<url>/api/comments/<int: comment_id>/           | See a comment with id    |
-|<url>/api/posts/create/ *                       | Create a post            |
-|<url>/api/comments/create/ *                    | Create a comment         |
-|<url>/api/posts/<int: post_id>/update/* **      | Update a post with id    |
-|<url>/api/comments/<int: comment_id>/update/* **| Update a comment with id |
-|<url>/api/posts/<int: post_id>/delete/* **      | Delete a post with id    |
-|<url>/api/comments/<int: comment_id>/delete/* **| Delete a comment with id |
-|<url>/api/posts/<int: post_id>/vote/ *          | Delete a comment with id |
+| API                                             | What can you do          |
+| ----------------------------------------------- |:------------------------ |
+|<url>/api/auth/token/                            | See all posts            |
+|<url>/api/posts/                                 | See all posts            |
+|<url>/api/comments/                              | See all comments         |
+|<url>/api/posts/<int: post_id>/                  | See a post with id       |
+|<url>/api/comments/<int: comment_id>/            | See a comment with id    |
+|<url>/api/posts/create/ *                        | Create a post            |
+|<url>/api/comments/create/ *                     | Create a comment         |
+|<url>/api/posts/<int: post_id>/update/ * **      | Update a post with id    |
+|<url>/api/comments/<int: comment_id>/update/ * **| Update a comment with id |
+|<url>/api/posts/<int: post_id>/delete/ * **      | Delete a post with id    |
+|<url>/api/comments/<int: comment_id>/delete/ * **| Delete a comment with id |
+|<url>/api/posts/<int: post_id>/vote/ *           | Delete a comment with id |
  
  
  *You have to be authenticated  
