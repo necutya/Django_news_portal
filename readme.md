@@ -33,7 +33,7 @@ Django news portal provides user friendly REST API. There are some
 |<url>/api/comments/<int: comment_id>/delete * **| Delete a comment with id |
  
  
- *You have to be authenticated
+ *You have to be authenticated  
  **You have to be an owner
  
  
